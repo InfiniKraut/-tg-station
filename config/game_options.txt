@@ -21,7 +21,7 @@ REVIVAL_BRAIN_LIFE -1
 ### RENAMING ###
 
 #Uncomment to allow cyborgs to rename themselves at roundstart.  Has no effect on roboticists renaming cyborgs the normal way.
-#RENAME_CYBORG
+RENAME_CYBORG
 
 ### OOC DURING ROUND ###
 #Comment this out if you want OOC to be automatically disabled during the round, it will be enabled during the lobby and after the round end results.
@@ -54,7 +54,7 @@ ANIMAL_DELAY 0
 #HUMANS_NEED_SURNAMES
 
 ## If uncommented, this forces all players to use random names !and appearances!.
-#FORCE_RANDOM_NAMES
+FORCE_RANDOM_NAMES
 
 
 ### ALERT LEVELS ###
@@ -73,15 +73,15 @@ ALERT_DELTA The station's self-destruct mechanism has been engaged. All crew are
 ## Default probablity is 1, increase to make that mode more likely to be picked.
 ## Set to 0 to disable that mode.
 
-PROBABILITY TRAITOR 5
-PROBABILITY TRAITORCHAN 4
-PROBABILITY DOUBLE_AGENTS 3
+PROBABILITY TRAITOR 2
+PROBABILITY TRAITORCHAN 2
+PROBABILITY DOUBLE_AGENTS 2
 PROBABILITY NUCLEAR 2
 PROBABILITY REVOLUTION 2
 PROBABILITY GANG 0
 PROBABILITY CULT 2
 PROBABILITY CHANGELING 2
-PROBABILITY WIZARD 4
+PROBABILITY WIZARD 1
 PROBABILITY MALFUNCTION 1
 PROBABILITY BLOB 2
 PROBABILITY MONKEY 1
@@ -174,7 +174,7 @@ SEC_START_BRIG
 
 ### GHOST INTERACTION ###
 ## Uncomment to let ghosts spin chairs. You may be wondering why this is a config option. Don't ask.
-#GHOST_INTERACTION
+GHOST_INTERACTION
 
 ### NON-VOCAL SILICONS ###
 ## Uncomment to stop the AI, or cyborgs, from having vocal communication.
