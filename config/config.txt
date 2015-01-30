@@ -117,7 +117,7 @@ GUEST_BAN
 WIKIURL http://www.tgstation13.org/wiki
 
 ##Rules address
-RULESURL http://http://87.106.26.203/rules.html
+RULESURL http://87.106.26.203/rules.html
 
 ##Github address
 GITHUBURL https://github.com/InfiniKraut/-tg-station
