@@ -10,4 +10,5 @@
 Nel01 = Host
 Arbolg = Trial Admin
 28gramslater = Trial Admin
-Misterstaub = Trial Admin
+Misterstaub = Badmin
+CruzxP = Moderator
