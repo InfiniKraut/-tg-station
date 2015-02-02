@@ -91,7 +91,9 @@
 
 /obj/machinery/singularity/process()
 	if(current_size >= STAGE_TWO)
-		move()
+		// Server can't handle a move every processingtick
+		if(prob(20))
+			move()
 		pulse()
 		if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
 			event()
