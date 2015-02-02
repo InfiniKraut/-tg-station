@@ -53,8 +53,8 @@
 	consume(user)
 	return 1
 
-/obj/machinery/singularity/Process_Spacemove() //The singularity stops drifting for no man!
-	return 0
+/obj/machinery/singularity/Process_Spacemove() //The singularity stops drifting for no man! - It does on my server
+	return 1
 
 /obj/machinery/singularity/blob_act(severity)
 	return
