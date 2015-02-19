@@ -537,8 +537,7 @@
 
 /obj/item/drone_shell/New()
 	..()
-	spawn(50)
-		notify_ghosts("Drone shell created at [get_area(loc)]")
+	notify_ghosts("Drone shell created at [get_area(loc)]")
 
 /obj/item/drone_shell/attack_ghost(mob/user)
 	if(jobban_isbanned(user,"pAI"))
