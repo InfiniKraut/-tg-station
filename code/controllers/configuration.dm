@@ -138,6 +138,10 @@
 	var/silicon_max_law_amount = 12
 	var/hook_round_end = 0
 
+	var/assistant_cap = -1
+
+	var/starlight = 0
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for(var/T in L)
@@ -423,6 +427,10 @@
 					config.mutant_races				= 1
 				if("mutant_colors")
 					config.mutant_colors			= 1
+				if("assistant_cap")
+					config.assistant_cap			= text2num(value)
+				if("starlight")
+					config.starlight				= 1
 				else
 					diary << "Unknown setting in configuration: '[name]'"
 
