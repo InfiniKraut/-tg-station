@@ -136,7 +136,6 @@
 
 	var/default_laws = 0 //Controls what laws the AI spawns with.
 	var/silicon_max_law_amount = 12
-
 	var/hook_round_end = 0
 
 /datum/configuration/New()
