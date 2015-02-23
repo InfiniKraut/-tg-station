@@ -16,5 +16,5 @@ BinaryBetrayer = Trial Admin
 SpaghettiScience = Trial Admin
 DimJim = Trial Admin
 Crunchepillar = Trial Admin
-Lucky_Horseshoe = Admin Candidate
+Lucky_Horseshoe = Trial Admin
 TheSecondWatcher = Trial Admin

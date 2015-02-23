@@ -18,7 +18,7 @@ lastrestart = int(resfile.readline())
 resfile.close()
 print datetime.datetime.now().strftime("%c")
 print "onRestart\n"
-if curHour > RESTART_THRESHOLD and lastrestart != curDay:
+if curHour > (RESTART_THRESHOLD-1) and lastrestart != curDay:
 	resfile = open(LAST_RESTART_FILE, "w+")
 	resfile.write(str(curDay))
 	resfile.close()
