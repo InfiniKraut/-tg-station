@@ -1,8 +1,7 @@
 <!-- Most valid html will work in here, excluding images. -->
 
-<h1>Welcome to Space Station 13!</h1>
-<h2>https://tgstation13.org/wiki/ - Use this one for everything</h2>
-<h1>There's a new rule regarding heads</h1>
-<i>My server is too shit for /vg/, sorry folks</i>
-
-
+<h3>Picking admins based on timezones now. Not getting picked doesn't mean I hate you, you just happen to be in a timezone for which I already have admins</h3>
+<h3>Please keep sending me mails (mail in OP) containing your byond name, timezone and when you play if you're interested in adminning</h3>
+<h2>I've decided to make the guidelines for admins public: http://crunchepillar.x10host.com/nelly.htm (you should read this if you're a new admin)</h2>
+<h3>Please keep in mind that our new admins are new to adminning in general. If you have any complaints about badmins don't just shitpost in the thread, please send me a mail</h3>
+<h2>We are reaching the maximum of what my server can handle in terms of playernumbers. If you happen to have a dedicated server with great power-per-core and feel like taking over hosting please send me a mail</h2>

@@ -77,7 +77,7 @@ ALERT_DELTA The station's self-destruct mechanism has been engaged. All crew are
 ## Default probablity is 1, increase to make that mode more likely to be picked.
 ## Set to 0 to disable that mode.
 
-PROBABILITY TRAITOR 2
+PROBABILITY TRAITOR 1
 PROBABILITY TRAITORCHAN 1
 PROBABILITY DOUBLE_AGENTS 1
 PROBABILITY NUCLEAR 1
@@ -87,8 +87,8 @@ PROBABILITY CULT 1
 PROBABILITY CHANGELING 1
 PROBABILITY WIZARD 1
 PROBABILITY MALFUNCTION 1
-PROBABILITY BLOB 2
-PROBABILITY RAGINMAGES 2
+PROBABILITY BLOB 1
+PROBABILITY RAGINMAGES 0
 PROBABILITY MONKEY 1
 PROBABILITY METEOR 0
 PROBABILITY EXTENDED 0
@@ -162,7 +162,7 @@ GATEWAY_DELAY 18000
 ## If the number of players ready at round starts exceeds this threshold, JOBS_HAVE_MINIMAL_ACCESS will automatically be enabled. Otherwise, it will be disabled.
 ## This is useful for accomodating both low and high population rounds on the same server.
 ## Comment out or set to 0 to disable this automatic toggle.
-MINIMAL_ACCESS_THRESHOLD 20
+MINIMAL_ACCESS_THRESHOLD 35
 
 ## Comment this out if you wish to use the setup where jobs have more access.
 ## This is intended for servers with low populations - where there are not enough
@@ -174,13 +174,13 @@ MINIMAL_ACCESS_THRESHOLD 20
 #ASSISTANTS_HAVE_MAINT_ACCESS
 
 ## Uncoment to give security maint access. Note that if you comment JOBS_HAVE_MINIMAL_ACCESS security already gets maint from that.
-#SECURITY_HAS_MAINT_ACCESS
+SECURITY_HAS_MAINT_ACCESS
 
 ## Uncomment to give everyone maint access.
 #EVERYONE_HAS_MAINT_ACCESS
 
 ## Comment this to make security officers spawn in departmental security posts
-SEC_START_BRIG
+# SEC_START_BRIG
 
 
 ### GHOST INTERACTION ###

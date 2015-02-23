@@ -13,4 +13,8 @@ Arbolg = Trial Admin
 Misterstaub = Badmin
 CruzxP = Trial Admin
 BinaryBetrayer = Trial Admin
-
+SpaghettiScience = Trial Admin
+DimJim = Trial Admin
+Crunchepillar = Trial Admin
+Lucky_Horseshoe = Admin Candidate
+TheSecondWatcher = Trial Admin
