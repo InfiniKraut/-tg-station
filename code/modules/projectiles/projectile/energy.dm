@@ -11,11 +11,10 @@
 	icon_state = "spark"
 	color = "#FFFF00"
 	nodamage = 1
-	stun = 5
+	stun = 10
 	stutter = 5
 	jitter = 20
 	hitsound = 'sound/weapons/taserhit.ogg'
-	range = 7
 
 /obj/item/projectile/energy/electrode/on_hit(var/atom/target, var/blocked = 0)
 	if(!proj_hit)
@@ -31,7 +30,7 @@
 			else if(C.status_flags & CANWEAKEN)
 				C.do_jitter_animation(jitter)
 				spawn(20)
-					C.Weaken(5)
+					C.Weaken(10)
 	..()
 
 /obj/item/projectile/energy/electrode/on_range() //to ensure the bolt sparks when it reaches the end of its range if it didn't hit a target yet
