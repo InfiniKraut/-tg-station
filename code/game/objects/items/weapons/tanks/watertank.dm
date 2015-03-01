@@ -290,7 +290,7 @@
 		if(!Adj|| !istype(target, /turf))
 			return
 		if(metal_synthesis_cooldown < 5)
-			var/obj/effect/effect/foam/F = new /obj/effect/effect/foam(get_turf(target), 1)
+			var/obj/effect/effect/foam/F = new /obj/effect/effect/foam/metal/aluminium(get_turf(target), 1)
 			F.amount = 0
 			metal_synthesis_cooldown++
 			spawn(100)
