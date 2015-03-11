@@ -7,14 +7,8 @@
 # NOTE: if the rank-name cannot be found in admin_ranks.txt, they will not be adminned! ~Carn #
 # NOTE: syntax was changed to allow hyphenation of ranknames, since spaces are stripped.      #
 ###############################################################################################
-Nel01 = Host
-Arbolg = Trial Admin
-28gramslater = Trial Admin
-Misterstaub = Badmin
-CruzxP = Trial Admin
-BinaryBetrayer = Trial Admin
-SpaghettiScience = Trial Admin
-DimJim = Trial Admin
-Crunchepillar = Trial Admin
-Lucky_Horseshoe = Trial Admin
-TheSecondWatcher = Trial Admin
+
+# Make sure you set this to whoever is host on your local install.
+# I'm host of my own, obviously, but probably not yours.
+
+Skrylar = Host

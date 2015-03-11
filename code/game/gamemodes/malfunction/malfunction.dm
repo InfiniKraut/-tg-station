@@ -9,6 +9,7 @@
 	required_enemies = 1
 	recommended_enemies = 1
 	pre_setup_before_jobs = 1
+	enemy_minimum_age = 30 //Same as AI minimum age
 
 
 	var/AI_win_timeleft = 5400 //started at 5400, in case I change this for testing round end.
@@ -143,6 +144,8 @@
 
 
 /datum/game_mode/malfunction/check_finished()
+	if(round_converted)
+		return ..()
 	if (station_captured && !to_nuke_or_not_to_nuke)
 		return 1
 	if (is_malf_ai_dead())
@@ -153,6 +156,7 @@
 				priority_announce("Hostile enviroment resolved. You have 3 minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
 			SSshuttle.emergencyNoEscape = 0
 			malf_mode_declared = 0
+			round_converted = convert_roundtype()
 		else
 			return 1
 	return ..() //check for shuttle and nuke
