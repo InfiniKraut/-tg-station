@@ -101,10 +101,10 @@
 	id = "liquid_dark_matter"
 	result = "liquid_dark_matter"
 	required_reagents = list("stable_plasma" = 1, "radium" = 1, "carbon" = 1)
-	result_amount = 3
+	result_amount = null
 	required_temp = 474
 
-/datum/reagent/liquid_dark_matter/reaction_turf(var/turf/simulated/T, var/volume)
+/*/datum/reagent/liquid_dark_matter/reaction_turf(var/turf/simulated/T, var/volume)
 	if(istype(T, /turf/simulated/floor/))
 		goonchem_vortex(T, 0, 5, 3)
 		return
@@ -114,13 +114,13 @@
 	if(method == TOUCH)
 		var/turf/simulated/T = get_turf(M)
 		goonchem_vortex(T, 0, 5, 3)
-		return
+		return*/ //o god what the fuck goof
 /datum/chemical_reaction/liquid_dark_matter/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/turf/simulated/T = get_turf(holder.my_atom)
 	goonchem_vortex(T, 0, 5, 6)
 	return
 
-proc/goonchem_vortex(var/turf/simulated/T, var/setting_type, var/range, var/pull_times)
+/proc/goonchem_vortex(var/turf/simulated/T, var/setting_type, var/range, var/pull_times)
 	for(var/atom/movable/X in orange(range, T))
 		if(istype(X, /obj/effect))
 			continue  //stop pulling smoke and hotspots please
@@ -160,9 +160,9 @@ proc/goonchem_vortex(var/turf/simulated/T, var/setting_type, var/range, var/pull
 /datum/chemical_reaction/blackpowder_explosion/on_reaction(var/datum/reagents/holder, var/created_volume)
 	sleep(rand(50,100))
 	var/turf/simulated/T = get_turf(holder.my_atom)
-	var/ex_severe = round(created_volume / 10)
-	var/ex_heavy = round(created_volume / 8)
-	var/ex_light = round(created_volume / 6)
-	var/ex_flash = round(created_volume / 4)
+	var/ex_severe = round(created_volume / 100)
+	var/ex_heavy = round(created_volume / 42)
+	var/ex_light = round(created_volume / 21)
+	var/ex_flash = round(created_volume / 8)
 	explosion(T,ex_severe,ex_heavy,ex_light,ex_flash, 1)
 	return

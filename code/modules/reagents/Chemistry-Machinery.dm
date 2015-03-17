@@ -920,7 +920,9 @@ obj/machinery/computer/pandemic/proc/replicator_cooldown(var/waittime)
 				/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("ketchup" = 0),
 				/obj/item/weapon/reagent_containers/food/snacks/grown/corn = list("cornoil" = 0),
 				/obj/item/weapon/reagent_containers/food/snacks/grown/wheat = list("flour" = -5),
+				/obj/item/weapon/reagent_containers/food/snacks/grown/oat = list("flour" = -5),
 				/obj/item/weapon/reagent_containers/food/snacks/grown/cherries = list("cherryjelly" = 0),
+				/obj/item/weapon/reagent_containers/food/snacks/egg = list("eggyolk" = -5),
 
 				//Grinder stuff, but only if dry
 				/obj/item/weapon/reagent_containers/food/snacks/grown/coffee/arabica = list("coffeepowder" = 0),

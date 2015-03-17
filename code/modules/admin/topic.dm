@@ -226,6 +226,21 @@
 		message_admins("<span class='adminnotice'>[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].</span>")
 		href_list["secretsadmin"] = "check_antagonist"
 
+	else if(href_list["end_round"])
+		if(!check_rights(R_ADMIN))	return
+
+		message_admins("<span class='adminnotice'>[key_name_admin(usr)] is considering ending the round.</span>")
+		if(alert(usr, "This will end the round, are you SURE you want to do this?", "Confirmation", "Yes", "No") == "Yes")
+			spawn(200) //I wish you would step back from that ledge my friend
+			if(alert(usr, "Final Confirmation: End the round NOW?", "Confirmation", "Yes", "No") == "Yes")
+				message_admins("<span class='adminnotice'>[key_name_admin(usr)] has ended the round.</span>")
+				ticker.force_ending = 1 //Yeah there we go APC destroyed mission accomplished
+				return
+			else
+				message_admins("<span class='adminnotice'>[key_name_admin(usr)] decided against ending the round.</span>")
+		else
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] decided against ending the round.</span>")
+
 	else if(href_list["simplemake"])
 		if(!check_rights(R_SPAWN))	return
 
@@ -1403,6 +1418,31 @@
 				break
 
 		src.manage_free_slots()
+
+	else if(href_list["unlimitjobslot"])
+		if(!check_rights(R_ADMIN))	return
+
+		var/Unlimit = href_list["unlimitjobslot"]
+
+		for(var/datum/job/job in SSjob.occupations)
+			if(job.title == Unlimit)
+				job.total_positions = -1
+				break
+
+		src.manage_free_slots()
+
+	else if(href_list["limitjobslot"])
+		if(!check_rights(R_ADMIN))	return
+
+		var/Limit = href_list["limitjobslot"]
+
+		for(var/datum/job/job in SSjob.occupations)
+			if(job.title == Limit)
+				job.total_positions = job.current_positions
+				break
+
+		src.manage_free_slots()
+
 
 	else if(href_list["adminspawncookie"])
 		if(!check_rights(R_ADMIN|R_FUN))	return

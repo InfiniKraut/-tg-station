@@ -11,11 +11,11 @@
 	icon_state = "spark"
 	color = "#FFFF00"
 	nodamage = 1
-	stun = 5
+	stun = 10
+	weaken = 10
 	stutter = 5
 	jitter = 20
 	hitsound = 'sound/weapons/taserhit.ogg'
-	range = 7
 
 /obj/item/projectile/energy/electrode/on_hit(var/atom/target, var/blocked = 0)
 	if(!proj_hit)
@@ -29,9 +29,8 @@
 			if(C.dna && C.dna.check_mutation(HULK))
 				C.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 			else if(C.status_flags & CANWEAKEN)
-				C.do_jitter_animation(jitter)
-				spawn(20)
-					C.Weaken(5)
+				spawn(10)
+					C.do_jitter_animation(jitter)
 	..()
 
 /obj/item/projectile/energy/electrode/on_range() //to ensure the bolt sparks when it reaches the end of its range if it didn't hit a target yet
@@ -68,4 +67,4 @@
 	stutter = 5
 
 /obj/item/projectile/energy/bolt/large
-	damage = 20
+	damage = 20 

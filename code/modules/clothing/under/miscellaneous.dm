@@ -14,6 +14,14 @@
 	item_state = "w_suit"
 	can_adjust = 0
 
+/obj/item/clothing/under/patriotsuit
+	name = "Patriotic Suit"
+	desc = "Motorcycle not included."
+	icon_state = "ek"
+	item_state = "ek"
+	item_color = "ek"
+	can_adjust = 0
+
 /obj/item/clothing/under/sl_suit
 	desc = "It's a very amish looking suit."
 	name = "amish suit"
@@ -128,9 +136,16 @@
 
 /obj/item/clothing/under/owl
 	name = "owl uniform"
-	desc = "A jumpsuit with owl wings. Photorealistic owl feathers! Twooooo!"
+	desc = "A soft brown jumpsuit made of synthetic feathers and strong conviction."
 	icon_state = "owl"
 	item_color = "owl"
+	can_adjust = 0
+
+/obj/item/clothing/under/griffin
+	name = "griffon uniform"
+	desc = "A soft brown jumpsuit with a white feather collar made of synthetic feathers and a lust for mayhem."
+	icon_state = "griffin"
+	item_color = "griffin"
 	can_adjust = 0
 
 /obj/item/clothing/under/rainbow

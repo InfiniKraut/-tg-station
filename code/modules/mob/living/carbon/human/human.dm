@@ -73,12 +73,15 @@
 			if(mind.changeling)
 				stat("Chemical Storage", "[mind.changeling.chem_charges]/[mind.changeling.chem_storage]")
 				stat("Absorbed DNA", mind.changeling.absorbedcount)
-		if (istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)&&wear_suit:s_initialized)
-			stat("Energy Charge", round(wear_suit:cell:charge/100))
+
+		//NINJACODE
+		if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja))
+			var/obj/item/clothing/suit/space/space_ninja/SN = wear_suit
+			if(SN.s_initialized)
+				stat("Energy Charge", round(SN.cell.charge/100))
 
 
 /mob/living/carbon/human/ex_act(severity, ex_target)
-	var/shielded = 0
 	var/b_loss = null
 	var/f_loss = null
 	switch (severity)
@@ -95,8 +98,7 @@
 				//user.throw_at(target, 200, 4)
 
 		if (2.0)
-			if (!shielded)
-				b_loss += 60
+			b_loss += 60
 
 			f_loss += 60
 
@@ -106,7 +108,7 @@
 
 			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
 				adjustEarDamage(30, 120)
-			if (prob(70) && !shielded)
+			if (prob(70))
 				Paralyse(10)
 
 		if(3.0)
@@ -115,7 +117,7 @@
 				b_loss = b_loss/2
 			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
 				adjustEarDamage(15,60)
-			if (prob(50) && !shielded)
+			if (prob(50))
 				Paralyse(10)
 
 	var/update = 0
@@ -138,16 +140,12 @@
 	..()
 
 /mob/living/carbon/human/blob_act()
-	if(stat == 2)	return
+	if(stat == DEAD)	return
 	show_message("<span class='userdanger'> The blob attacks you!</span>")
 	var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 	var/obj/item/organ/limb/affecting = get_organ(ran_zone(dam_zone))
 	apply_damage(5, BRUTE, affecting, run_armor_check(affecting, "melee"))
 	return
-
-/mob/living/carbon/human/var/co2overloadtime = null
-/mob/living/carbon/human/var/temperature_resistance = T0C+75
-
 
 /mob/living/carbon/human/show_inv(mob/user)
 	user.set_machine(src)
@@ -257,11 +255,11 @@
 			var/obj/item/organ/limb/L = locate(href_list["embedded_limb"])
 			if(!I || !L || I.loc != src) //no item, no limb, or item is not in limb (the person atleast) anymore
 				return
-			var/time_taken = 30*I.w_class
+			var/time_taken = I.embedded_unsafe_removal_time*I.w_class
 			usr.visible_message("<span class='notice'>[usr] attempts to remove [I] from their [L.getDisplayName()]!</span>","<span class='notice'>You attempt to remove [I] from your [L.getDisplayName()], it will take [time_taken/10] seconds.</span>")
 			if(do_after(usr, time_taken, needhand = 1))
 				L.embedded_objects -= I
-				L.take_damage(8*I.w_class)//It hurts to rip it out, get surgery you dingus.
+				L.take_damage(I.embedded_unsafe_removal_pain_multiplier*I.w_class)//It hurts to rip it out, get surgery you dingus.
 				I.loc = get_turf(src)
 				usr.put_in_hands(I)
 				usr.emote("scream")
@@ -717,3 +715,19 @@
 				H.w_uniform.add_fingerprint(M)
 
 			..()
+
+
+/mob/living/carbon/human/generateStaticOverlay()
+	var/image/staticOverlay = image(icon('icons/effects/effects.dmi', "static"), loc = src)
+	staticOverlay.override = 1
+	staticOverlays["static"] = staticOverlay
+
+	staticOverlay = image(icon('icons/effects/effects.dmi', "blank"), loc = src)
+	staticOverlay.override = 1
+	staticOverlays["blank"] = staticOverlay
+
+	staticOverlay = getLetterImage(src, "H", 1)
+	staticOverlay.override = 1
+	staticOverlays["letter"] = staticOverlay
+
+

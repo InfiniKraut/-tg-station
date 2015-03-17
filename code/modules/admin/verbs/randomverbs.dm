@@ -33,7 +33,7 @@
 	if(usr)
 		if (usr.client)
 			if(usr.client.holder)
-				M << "<b>You hear [ticker.Bible_deity_name ? "the voice of " + ticker.Bible_deity_name : "a voice"] in your head... <i>[msg]</i></b>"
+				M << "<b>You hear a voice in your head... <i>[msg]</i></b>"
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	message_admins("<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>")
@@ -327,7 +327,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				new_character.loc = get_turf(synd_spawn)
 			call(/datum/game_mode/proc/equip_syndicate)(new_character)
 		if("Space Ninja")
-			var/ninja_spawn[] = list()
+			var/list/ninja_spawn = list()
 			for(var/obj/effect/landmark/L in landmarks_list)
 				if(L.name=="carpspawn")
 					ninja_spawn += L

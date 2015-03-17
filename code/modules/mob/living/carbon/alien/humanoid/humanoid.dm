@@ -7,7 +7,6 @@
 	var/leap_on_click = 0
 	var/pounce_cooldown = 0
 	var/pounce_cooldown_time = 30
-	update_icon = 1
 
 //This is fine right now, if we're adding organ specific damage this needs to be updated
 /mob/living/carbon/alien/humanoid/New()
@@ -27,53 +26,6 @@
 	if(r_store) r_store.emp_act(severity)
 	if(l_store) l_store.emp_act(severity)
 	..()
-
-/mob/living/carbon/alien/humanoid/ex_act(severity, target)
-	..()
-
-	var/shielded = 0
-
-	var/b_loss = null
-	var/f_loss = null
-	switch (severity)
-		if (1.0)
-			gib()
-			return
-
-		if (2.0)
-			if (!shielded)
-				b_loss += 60
-
-			f_loss += 60
-
-			adjustEarDamage(30, 120)
-
-		if(3.0)
-			b_loss += 30
-			if (prob(50) && !shielded)
-				Paralyse(1)
-			adjustEarDamage(15 , 60)
-
-	adjustBruteLoss(b_loss)
-	adjustFireLoss(f_loss)
-
-	updatehealth()
-
-/mob/living/carbon/alien/humanoid/blob_act()
-	if (stat == 2)
-		return
-	var/shielded = 0
-	var/damage = null
-	if (stat != 2)
-		damage = rand(30,40)
-
-	if(shielded)
-		damage /= 4
-
-	show_message("<span class='userdanger'>The blob attacks!</span>")
-	adjustFireLoss(damage)
-	return
-
 
 /mob/living/carbon/alien/humanoid/attack_slime(mob/living/carbon/slime/M as mob)
 	..()
@@ -137,10 +89,6 @@
 	if (handcuffed)
 		return 1
 	return 0
-
-
-/mob/living/carbon/alien/humanoid/var/co2overloadtime = null
-/mob/living/carbon/alien/humanoid/var/temperature_resistance = T0C+75
 
 
 /mob/living/carbon/alien/humanoid/show_inv(mob/user)

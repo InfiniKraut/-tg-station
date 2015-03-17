@@ -8,11 +8,48 @@ Sorry Giacom. Please don't be mad :(
 		push_mob_back(src, A.push_dir)
 */
 
+
+/mob/living/New()
+	. = ..()
+	generateStaticOverlay()
+	if(staticOverlays.len)
+		for(var/mob/living/simple_animal/drone/D in player_list)
+			if(D && D.seeStatic)
+				if(D.staticChoice in staticOverlays)
+					D.staticOverlays |= staticOverlays[D.staticChoice]
+					D.client.images |= staticOverlays[D.staticChoice]
+				else //no choice? force static
+					D.staticOverlays |= staticOverlays["static"]
+					D.client.images |= staticOverlays["static"]
+
+
 /mob/living/Destroy()
-//	if(mind)
-//		mind.current = null
-	..()
+	. = ..()
+
+	for(var/mob/living/simple_animal/drone/D in player_list)
+		for(var/image/I in staticOverlays)
+			D.staticOverlays.Remove(I)
+			D.client.images.Remove(I)
+			del(I)
+	staticOverlays.len = 0
+
 	del(src)
+
+
+/mob/living/proc/generateStaticOverlay()
+	staticOverlays.Add(list("static", "blank", "letter"))
+	var/image/staticOverlay = image(getStaticIcon(new/icon(icon,icon_state)), loc = src)
+	staticOverlay.override = 1
+	staticOverlays["static"] = staticOverlay
+
+	staticOverlay = image(getBlankIcon(new/icon(icon, icon_state)), loc = src)
+	staticOverlay.override = 1
+	staticOverlays["blank"] = staticOverlay
+
+	staticOverlay = getLetterImage(src)
+	staticOverlay.override = 1
+	staticOverlays["letter"] = staticOverlay
+
 
 //Generic Bump(). Override MobBump() and ObjBump() instead of this.
 /mob/living/Bump(atom/A, yes)
@@ -413,6 +450,8 @@ Sorry Giacom. Please don't be mad :(
 	if(ishuman(src))
 		var/mob/living/carbon/human/human_mob = src
 		human_mob.restore_blood()
+		human_mob.remove_all_embedded_objects()
+
 	update_fire()
 	regenerate_icons()
 	..()
@@ -495,7 +534,7 @@ Sorry Giacom. Please don't be mad :(
 						M.stop_pulling()
 
 						//this is the gay blood on floor shit -- Added back -- Skie
-						if(M.lying && (prob(M.getBruteLoss() / 2)))
+						if(M.lying && !M.buckled && (prob(M.getBruteLoss() / 2)))
 							makeTrail(T, M)
 						pulling.Move(T, get_dir(pulling, T))
 						if(M)
@@ -742,6 +781,20 @@ Sorry Giacom. Please don't be mad :(
 	else if(!on && floating)
 		animate(src, pixel_y = initial(pixel_y), time = 10)
 		floating = 0
+
+//called when the mob receives a bright flash
+/mob/living/proc/flash_eyes(intensity = 1, override_blindness_check = 0)
+	if(check_eye_prot() < intensity && (override_blindness_check || !(disabilities & BLIND)))
+		flick("e_flash", flash)
+		return 1
+
+//this returns the mob's protection against eye damage (number between -1 and 2)
+/mob/living/proc/check_eye_prot()
+	return 0
+
+//this returns the mob's protection against ear damage (0 or 1)
+/mob/living/proc/check_ear_prot()
+	return 0
 
 // The src mob is trying to strip an item from someone
 // Override if a certain type of mob should be behave differently when stripping items (can't, for example)
